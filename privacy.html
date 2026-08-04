@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy — Permission Review for Jira</title>
+    <meta
+      name="description"
+      content="What Permission Review for Jira reads, what it stores (no personal data), what it sends anywhere else (nothing), and how to delete it."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Softyways">
+        <rect width="144" height="144" rx="30" fill="#172B4D" />
+        <g fill="#5E6C84">
+          <circle cx="40" cy="40" r="10" />
+          <circle cx="72" cy="40" r="10" />
+          <circle cx="104" cy="40" r="10" />
+          <circle cx="40" cy="72" r="10" />
+          <circle cx="104" cy="72" r="10" />
+          <circle cx="40" cy="104" r="10" />
+          <circle cx="72" cy="104" r="10" />
+          <circle cx="104" cy="104" r="10" />
+        </g>
+        <circle cx="72" cy="72" r="19" fill="none" stroke="#FFAB00" stroke-width="4" opacity="0.45" />
+        <circle cx="72" cy="72" r="12" fill="#FFAB00" />
+      </svg>
+      <a href="./">Softyways</a>
+    </header>
+
+    <main>
+      <h1>Privacy policy</h1>
+      <p class="lead">Permission Review for Jira</p>
+      <p class="date">Last updated 4 August 2026</p>
+
+      <p>
+        Every claim on this page is meant to be checkable against the app's manifest and its behaviour, not taken on
+        trust. Where the app cannot prove something, it says so.
+      </p>
+
+      <h2>What the app reads</h2>
+      <p>
+        From the Jira REST API, as the app, with the scopes <code>read:jira-work</code>, <code>read:jira-user</code> and
+        <code>storage:app</code>:
+      </p>
+
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Where from</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Permission schemes and their grants</td>
+              <td><code>permissionscheme</code></td>
+              <td>The report itself</td>
+            </tr>
+            <tr>
+              <td>Projects, and which scheme each uses</td>
+              <td><code>project/search</code>, <code>project/{key}/permissionscheme</code></td>
+              <td>To know what each grant governs</td>
+            </tr>
+            <tr>
+              <td><strong>Display name, account ID, active or inactive</strong> of users holding administrative permissions</td>
+              <td><code>user/permission/search</code></td>
+              <td>To say <em>who</em> can administer a project, not just which group</td>
+            </tr>
+            <tr>
+              <td><strong>Display name, account ID, active or inactive</strong> of every user in the directory</td>
+              <td><code>users/search</code></td>
+              <td>To find deactivated accounts still sitting in groups that were granted power</td>
+            </tr>
+            <tr>
+              <td>Group names a user belongs to</td>
+              <td><code>user/groups</code></td>
+              <td>To say <em>why</em> a person has a permission</td>
+            </tr>
+            <tr>
+              <td>Whether the app has Jira administration rights</td>
+              <td><code>mypermissions</code></td>
+              <td>To declare the report's own coverage</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Outside the API, the page reads one thing from the Forge context: <strong>the address of your site</strong>,
+        printed at the top of exported files so an auditor knows which Jira they are holding. It is not stored.
+      </p>
+
+      <p>
+        <strong>Not read</strong>: email addresses, avatars, issue content, comments, attachments, worklogs, or anything
+        outside permission configuration. The app never writes to Jira — it holds no write scope at all.
+      </p>
+
+      <h2>What the app stores</h2>
+
+      <div class="callout">
+        <p><strong>No personal data. Not a display name, not an account ID, not a hash of one.</strong></p>
+      </div>
+
+      <p>
+        The report you read is assembled in memory, sent to your browser, and forgotten. Reopening the page reads Jira
+        again. Earlier versions cached the report for an hour; that cache is gone, and the app deletes it on sight when
+        upgrading from one.
+      </p>
+
+      <p>
+        One key is written, in Forge storage, which lives inside Atlassian's own infrastructure — no server of ours is
+        involved:
+      </p>
+
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Contents</th>
+              <th>Kept for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>baseline</code></td>
+              <td>
+                What was signed off at the last «Mark as reviewed»: the hand-made grants (whose holders are groups,
+                roles and licence types — configuration, not people), and, for each project and permission,
+                <strong>how many</strong> people held it
+              </td>
+              <td>Until replaced by the next review, or deleted</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        People are remembered as a <strong>number</strong>, never as a name. So the app can tell you that four people
+        could administer a project when you signed and five can today — and name today's five from Jira, live. What it
+        cannot do is name the one who left, and it says so rather than implying otherwise.
+      </p>
+
+      <p>
+        The exported CSV and Excel files do contain names. They are built <strong>in your browser</strong>, from the
+        report on screen, and saved by you. They never pass through storage or through any server of ours.
+      </p>
+
+      <h3>Where it is stored</h3>
+      <p>
+        <strong>In your site's own region.</strong> The app stores everything in persistent Forge hosted storage and
+        nowhere else, and Atlassian's platform pins that storage wherever your Jira site is pinned — Australia, Canada,
+        the EU, Germany, India, Japan, Singapore, South Korea, Switzerland, the UK, the USA, or any region Atlassian
+        adds later. If you migrate your site to another region, the app's data migrates with it. This needs nothing from
+        us and nothing from you: it follows from having no server of our own.
+      </p>
+
+      <h2>What the app sends anywhere else</h2>
+      <p>
+        <strong>Nothing.</strong> The app's manifest declares no external permissions, so the Forge platform blocks any
+        outbound request. There is no vendor server, no analytics, no third-party processor. The app is eligible for
+        Atlassian's <strong>Runs on Atlassian</strong> programme, which is the platform's own verification of exactly
+        this.
+      </p>
+      <p>
+        Because nothing about a person is retained, the personal data reporting duties Atlassian places on apps that
+        <em>do</em> retain it do not arise here. That is the reason the design is this way, and not only a nice thing to
+        be able to say.
+      </p>
+
+      <h2>How to delete it</h2>
+      <ul>
+        <li>
+          <strong>«Forget stored data»</strong> on the app page deletes the baseline immediately, plus anything an older
+          version of the app left behind. The next report is read from Jira, as every report is.
+        </li>
+        <li><strong>Uninstalling the app</strong> removes its Forge storage entirely.</li>
+        <li>Nothing survives either action, because there is nowhere else for it to be.</li>
+      </ul>
+
+      <h2>Who can see the report</h2>
+      <p>
+        The app page is a Jira admin page: only Jira administrators reach it. What it shows is configuration those
+        administrators can already read in Jira, one scheme and one project at a time — the app assembles it, it does
+        not widen access to it.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy, or a request about data:
+        <a href="mailto:andysoftydev@gmail.com">andysoftydev@gmail.com</a>.
+      </p>
+    </main>
+
+    <footer>
+      <p><a href="./">Softyways</a> · Last updated 4 August 2026</p>
+    </footer>
+  </body>
+</html>

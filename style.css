@@ -1,0 +1,165 @@
+/*
+ * One stylesheet for the whole site. No framework, no fonts to fetch: the two
+ * pages here exist to be read by a compliance reviewer and by Atlassian's app
+ * reviewer, and both should get them instantly on any connection.
+ */
+
+:root {
+  --ink: #172b4d;
+  --muted: #5e6c84;
+  --line: #dfe1e6;
+  --accent: #ffab00;
+  --paper: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e6edf7;
+    --muted: #9fb0c9;
+    --line: #2c3e5d;
+    --paper: #10182a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.25rem 5rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+main,
+header {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.5rem;
+}
+
+header svg {
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 2.5rem 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.35rem;
+}
+
+p,
+ul {
+  margin: 0 0 1rem;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.callout {
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 0 0.75rem 1rem;
+  margin: 1.5rem 0;
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* Wide content must scroll inside itself, never push the page sideways. */
+.scroll {
+  overflow-x: auto;
+  margin: 0 0 1.25rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 34rem;
+  font-size: 0.95rem;
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  font-weight: 600;
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+footer {
+  max-width: 46rem;
+  margin: 4rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
