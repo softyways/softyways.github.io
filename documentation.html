@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documentation — Permission Review for Jira</title>
+    <meta
+      name="description"
+      content="How to open Permission Review for Jira, what each tab and finding means, how the exports work, and what the app deliberately does not cover."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Softyways">
+        <rect width="144" height="144" rx="30" fill="#172B4D" />
+        <g fill="#5E6C84">
+          <circle cx="40" cy="40" r="10" />
+          <circle cx="72" cy="40" r="10" />
+          <circle cx="104" cy="40" r="10" />
+          <circle cx="40" cy="72" r="10" />
+          <circle cx="104" cy="72" r="10" />
+          <circle cx="40" cy="104" r="10" />
+          <circle cx="72" cy="104" r="10" />
+          <circle cx="104" cy="104" r="10" />
+        </g>
+        <circle cx="72" cy="72" r="19" fill="none" stroke="#FFAB00" stroke-width="4" opacity="0.45" />
+        <circle cx="72" cy="72" r="12" fill="#FFAB00" />
+      </svg>
+      <a href="./">Softyways</a>
+    </header>
+
+    <main>
+      <h1>Documentation</h1>
+      <p class="lead">Permission Review for Jira</p>
+
+      <h2>Opening the app</h2>
+      <p>
+        In Jira: <strong>Settings (gear icon) → Apps</strong>, then <strong>Permission Review</strong> in the left menu,
+        under the <em>Apps</em> section at the bottom. Only Jira administrators can reach it.
+      </p>
+      <p>
+        If you land on a 404, you are almost certainly signed out or signed in as a non-administrator. Jira returns 404
+        rather than a permission error for admin pages.
+      </p>
+
+      <h2>What the first line means</h2>
+      <p>
+        <em>«2 of 306 grants were decided by a person.»</em> A permission scheme is born with dozens of grants — to
+        project roles, to the assignee, to the reporter, to licence holders. Those are identical in every Jira in the
+        world and nobody chose them. The rest — grants to a <strong>group</strong> or to a <strong>named person</strong>
+        — were added by somebody, on purpose, for a reason usually nobody wrote down. Those are the ones a review is
+        about.
+      </p>
+
+      <h2>The tabs</h2>
+      <ul>
+        <li><strong>Decided by a person</strong> — the short list above, in full.</li>
+        <li>
+          <strong>People with access</strong> — for each project and administrative permission, who actually holds it,
+          and through which hand-granted group («via contractors»). Deactivated accounts are marked.
+        </li>
+        <li><strong>Who has what</strong> — the same grants one row per holder instead of one per permission.</li>
+        <li><strong>Projects</strong> — every project, its type, and the scheme governing it.</li>
+        <li><strong>All grants</strong> — everything, for when you need to check a claim.</li>
+      </ul>
+      <p>Every table has a filter box and sortable headers. The tab you are on is kept in the URL, so it can be bookmarked.</p>
+
+      <h2>Findings</h2>
+      <p>The report flags, in order of severity:</p>
+      <ul>
+        <li>permissions granted to <strong>anyone</strong>, including logged-out visitors;</li>
+        <li>projects whose scheme is <strong>missing from the scheme list</strong>;</li>
+        <li>projects governed <strong>outside the central schemes</strong> (team-managed);</li>
+        <li><strong>administrative power</strong> granted to named groups or people;</li>
+        <li><strong>deactivated accounts</strong> still sitting in groups that were granted permissions;</li>
+        <li>administrative permissions that currently <strong>reach nobody</strong> through the scheme;</li>
+        <li>schemes <strong>nobody uses</strong>, and schemes identical under different names;</li>
+        <li>anything the scan <strong>could not read</strong>, and how much of the site it covered.</li>
+      </ul>
+
+      <div class="callout">
+        <p>
+          <strong>The report states its own limits.</strong> If the app cannot confirm it has Jira administration
+          rights, the first finding says the report may be incomplete — schemes attached to no project are invisible
+          without those rights. A review tool that omits in silence is worse than one that refuses to run.
+        </p>
+      </div>
+
+      <h2>Marking a review as done</h2>
+      <p>
+        <strong>Mark as reviewed</strong> records this moment as your baseline. From then on, the box at the top of the
+        page shows only what changed since: grants that appeared or disappeared, and where the <em>number</em> of people
+        holding a permission moved.
+      </p>
+      <p>
+        People are compared by count because the app stores no names (see the
+        <a href="privacy.html">privacy policy</a>). So it will tell you that four people could administer a project when
+        you signed and five can today, and name today's five from live data. It cannot name the one who left — and it
+        says so instead of implying otherwise.
+      </p>
+
+      <h2>Exports</h2>
+      <p>
+        <strong>Download report for auditors (Excel)</strong> produces a workbook with a one-page <em>Summary</em> and a
+        sheet per question, headers frozen and filters on. <strong>CSV</strong> gives the same content raw. Both are
+        built in your browser and carry your site's address at the top, so a reviewer holding several reports knows
+        which Jira each one describes.
+      </p>
+
+      <h2>Forget stored data</h2>
+      <p>
+        Deletes the signed baseline immediately. The next report is read from Jira, as every report is. The button
+        works even without an active subscription.
+      </p>
+
+      <h2>What it does not cover</h2>
+      <ul>
+        <li>Permission <strong>schemes</strong> only — global permissions, issue security levels, notification schemes and project role membership are out of scope.</li>
+        <li><strong>Jira</strong>, not Confluence.</li>
+        <li>It <strong>never writes</strong> to Jira: it holds no write scope and cannot fix anything for you.</li>
+        <li>
+          Site administrators can administer every project regardless of any scheme and are not returned by Jira's
+          permission search. Where a permission reaches nobody through the scheme, the report says «nobody via the
+          scheme» rather than «nobody».
+        </li>
+      </ul>
+
+      <h2>Support</h2>
+      <p>
+        <a href="mailto:andysoftydev@gmail.com">andysoftydev@gmail.com</a>. Include your Jira site URL and, if the
+        problem is in the report, the numbers line at the top of the page — it says how many schemes, projects and API
+        calls the scan used.
+      </p>
+    </main>
+
+    <footer>
+      <p><a href="./">Softyways</a> · <a href="privacy.html">Privacy policy</a></p>
+    </footer>
+  </body>
+</html>
