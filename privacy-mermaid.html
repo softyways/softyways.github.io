@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy — Mermaid SVG Diagrams for Confluence</title>
+    <meta
+      name="description"
+      content="What Mermaid SVG Diagrams for Confluence reads (your diagram text, in your browser), what it stores (nothing), and what it sends anywhere else (nothing)."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Softyways">
+        <rect width="144" height="144" rx="30" fill="#172B4D" />
+        <g fill="#5E6C84">
+          <circle cx="40" cy="40" r="10" />
+          <circle cx="72" cy="40" r="10" />
+          <circle cx="104" cy="40" r="10" />
+          <circle cx="40" cy="72" r="10" />
+          <circle cx="104" cy="72" r="10" />
+          <circle cx="40" cy="104" r="10" />
+          <circle cx="72" cy="104" r="10" />
+          <circle cx="104" cy="104" r="10" />
+        </g>
+        <circle cx="72" cy="72" r="19" fill="none" stroke="#FFAB00" stroke-width="4" opacity="0.45" />
+        <circle cx="72" cy="72" r="12" fill="#FFAB00" />
+      </svg>
+      <a href="./">Softyways</a>
+    </header>
+
+    <main>
+      <h1>Privacy policy</h1>
+      <p class="lead">Mermaid SVG Diagrams for Confluence</p>
+      <p class="date">Last updated 30 August 2026</p>
+
+      <p>
+        Every claim on this page is meant to be checkable against the app's manifest and its behaviour, not taken on
+        trust. Where the app cannot prove something, it says so.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>The short version.</strong> This app draws a diagram. It does that inside your browser, from text that
+          is already on your Confluence page. It has no back end, asks for no permissions, stores nothing, and sends
+          nothing anywhere.
+        </p>
+      </div>
+
+      <h2>What the app reads</h2>
+      <p>
+        The text of the diagram you wrote, which Confluence hands to the macro as its configuration. Nothing else.
+      </p>
+      <p>
+        The app requests <strong>no Atlassian scopes at all</strong> — <code>permissions.scopes</code> in its manifest
+        is an empty list. There is no Confluence API it could read even if it tried: not page content, not user
+        profiles, not spaces, not attachments. It holds no write scope either, so it cannot change anything in your
+        site.
+      </p>
+
+      <h2>Where the work happens</h2>
+      <p>
+        <strong>In the reader's browser.</strong> The Mermaid library is shipped as a static resource of the app and
+        runs on the page; the SVG is produced there and placed into the macro. This app has no resolver and no
+        server-side function, and no server of ours exists anywhere.
+      </p>
+
+      <h2>What the app stores</h2>
+
+      <div class="callout">
+        <p><strong>Nothing. Not in Forge storage, not in your browser, not anywhere.</strong></p>
+      </div>
+
+      <p>
+        The diagram text is saved by <strong>Confluence</strong>, as part of your page, exactly like the rest of your
+        content. It is your data, in your Atlassian site, under your own data residency and retention settings — the
+        app never holds a second copy of it, and keeps nothing between one page view and the next.
+      </p>
+
+      <h3>Where it is stored</h3>
+      <p>
+        <strong>Wherever your Confluence content is.</strong> Because the app stores nothing of its own, there is no
+        second location to ask about: data residency for the diagram text is simply the data residency of the page it
+        lives on. This needs nothing from us and nothing from you. It follows from having no storage and no server.
+      </p>
+
+      <h2>What the app sends anywhere else</h2>
+      <p>
+        <strong>Nothing.</strong> The manifest declares no external permissions, so the Forge platform blocks any
+        outbound request — the app could not phone home even if a future bug tried to. There is no vendor server, no
+        analytics, no error-reporting service, no telemetry, and no fonts or scripts loaded from a third-party host.
+      </p>
+      <p>
+        The app is deployed as eligible for Atlassian's <strong>Runs on Atlassian</strong> programme, which is the
+        platform's own verification of exactly this.
+      </p>
+
+      <h2>Personal data</h2>
+      <p>
+        The app is not designed to process personal data, and in normal use it does not: a flowchart is text an author
+        typed. If you choose to write someone's name inside a diagram, that text stays exactly where the rest of your
+        page content is — in Confluence. It never reaches us, because nothing reaches us.
+      </p>
+      <p>
+        For the same reason Softyways is neither a data controller nor a data processor for this app: we do not
+        receive, store, or process any data from your site.
+      </p>
+
+      <h2>How to delete it</h2>
+      <p>
+        There is nothing of ours to delete, and nothing of yours that we hold. Uninstalling the app removes it from your
+        site; your pages, including the diagram text, remain your content and are managed by Confluence exactly as
+        before.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If the app's behaviour changes, this page changes with it and the date above moves. The claims here are tied to
+        the manifest: if a future version asked for a scope or an external permission, that would be visible on the
+        app's Marketplace listing before it was visible here.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy, or a request about data:
+        <a href="mailto:support@softyways.com">support@softyways.com</a>. Security reports:
+        <a href="mailto:security@softyways.com">security@softyways.com</a>.
+      </p>
+    </main>
+
+    <footer>
+      <p><a href="./">Softyways</a> · Last updated 30 August 2026</p>
+    </footer>
+  </body>
+</html>
