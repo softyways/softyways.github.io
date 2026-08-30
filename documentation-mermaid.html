@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documentation — Mermaid SVG Diagrams for Confluence</title>
+    <meta
+      name="description"
+      content="How to add a Mermaid diagram to a Confluence page, how zoom and full screen work, what happens in dark mode and inside containers, and what the app deliberately does not do."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Softyways">
+        <rect width="144" height="144" rx="30" fill="#172B4D" />
+        <g fill="#5E6C84">
+          <circle cx="40" cy="40" r="10" />
+          <circle cx="72" cy="40" r="10" />
+          <circle cx="104" cy="40" r="10" />
+          <circle cx="40" cy="72" r="10" />
+          <circle cx="104" cy="72" r="10" />
+          <circle cx="40" cy="104" r="10" />
+          <circle cx="72" cy="104" r="10" />
+          <circle cx="104" cy="104" r="10" />
+        </g>
+        <circle cx="72" cy="72" r="19" fill="none" stroke="#FFAB00" stroke-width="4" opacity="0.45" />
+        <circle cx="72" cy="72" r="12" fill="#FFAB00" />
+      </svg>
+      <a href="./">Softyways</a>
+    </header>
+
+    <main>
+      <h1>Documentation</h1>
+      <p class="lead">Mermaid SVG Diagrams for Confluence</p>
+
+      <h2>Adding a diagram</h2>
+      <p>
+        Edit a Confluence page, type <strong>/Mermaid</strong> and choose <strong>Mermaid Diagram</strong>. The macro
+        opens its configuration panel: a single text box. Paste or write your Mermaid text there and press
+        <strong>Save</strong>. The diagram is drawn straight away, in the editor and on the published page.
+      </p>
+      <p>
+        A macro you have just inserted shows a sample diagram, so you can see it working before you have written
+        anything. Open the configuration and replace it with your own.
+      </p>
+
+      <h2>Writing the diagram</h2>
+      <p>
+        The text is plain <a href="https://mermaid.js.org/">Mermaid</a>. The first line has to say which kind of diagram
+        it is — <code>graph TD</code>, <code>sequenceDiagram</code>, <code>classDiagram</code>, <code>gantt</code>, and
+        so on. That first line is the single most common thing to lose when pasting.
+      </p>
+      <pre><code>graph TD
+  A[Reader opens the page] --&gt; B{Is there a diagram?}
+  B -- yes --&gt; C[Render as SVG]
+  B -- no --&gt; D[Nothing is loaded]</code></pre>
+
+      <h2>Zoom and full screen</h2>
+      <p>
+        Hover over a diagram and a small bar appears at its bottom right: <strong>−</strong>, <strong>Fit</strong>,
+        <strong>+</strong> and <strong>Full screen</strong>. Zoom steps from half size to four times; <em>Fit</em>
+        returns the diagram to the width of the page column. Past that width the diagram scrolls inside its own box
+        rather than pushing the page sideways.
+      </p>
+      <p>
+        <strong>Full screen</strong> opens the same diagram in a dialog the size of the window, with the same bar. It is
+        a dialog and not the browser's own full-screen mode, because Confluence does not allow an app to take over the
+        screen; nothing about the diagram changes, only the room it has.
+      </p>
+
+      <h2>Width, printing and dark mode</h2>
+      <p>
+        The diagram is drawn as SVG at the width it actually needs, and is only ever scaled <em>down</em> to fit a
+        narrower column — never stretched up to fill one. Because it is vector, it stays sharp when you zoom, when the
+        page is printed, and on a high-resolution screen.
+      </p>
+      <p>
+        The background is transparent and the diagram follows the Confluence theme, so in dark mode it sits on the page
+        colour instead of on a white rectangle. Switching the theme redraws the diagram without reloading the page.
+      </p>
+
+      <h2>Inside expand and include page</h2>
+      <p>
+        A diagram works inside a collapsed <strong>Expand</strong> macro, inside an <strong>Include page</strong>, and
+        with the two nested. It is drawn when the container opens, at the width it then has.
+      </p>
+
+      <h2>When the syntax breaks</h2>
+      <p>
+        Instead of a generic failure, the macro shows the line number and an excerpt with a marker under the character
+        Mermaid stopped at. The grammar's list of expected tokens is deliberately cut: it names symbols of the parser,
+        not anything you typed.
+      </p>
+
+      <h2>Licence</h2>
+      <p>
+        Sites with up to 10 users are free. On a site with no active subscription the macro shows a short notice in
+        place of the diagram; your text is untouched and reappears as soon as the subscription is active. Subscriptions
+        are managed by Atlassian, from the app's Marketplace listing or your site's <em>Apps</em> administration.
+      </p>
+
+      <h2>What it does not do</h2>
+      <ul>
+        <li>
+          It is <strong>not a drawing tool</strong>. You write Mermaid; there is no canvas and no shape palette. If you
+          want to drag boxes, draw.io and Gliffy do that and this does not.
+        </li>
+        <li>It does not render <strong>PlantUML</strong> or other diagram languages. Mermaid only.</li>
+        <li>
+          The diagram text is <strong>not indexed by Confluence search</strong>. Searching for a label inside a diagram
+          will not find the page.
+        </li>
+        <li>No AI generation. The diagram is what you wrote.</li>
+        <li><strong>Confluence</strong>, not Jira.</li>
+      </ul>
+
+      <h2>Where your text goes</h2>
+      <p>
+        Nowhere. The diagram is drawn in the reader's browser, by a copy of Mermaid served as part of the app. The macro
+        holds no server of ours, makes no outbound call, and asks Confluence for no permission at all: your text stays
+        inside your Atlassian site, saved in the page like any other content. This is what the
+        <strong>Runs on Atlassian</strong> badge on the listing attests.
+      </p>
+
+      <h2>Support</h2>
+      <p>
+        <a href="https://andysoftydev.atlassian.net/servicedesk/customer/portal/1">Open a ticket</a>, or write to
+        <a href="mailto:support@softyways.com">support@softyways.com</a>. Include your Confluence site URL and, if a
+        diagram will not draw, the diagram text itself — it is almost always reproducible from the text alone.
+      </p>
+    </main>
+
+    <footer>
+      <p><a href="./">Softyways</a> · <a href="privacy-mermaid.html">Privacy policy</a></p>
+    </footer>
+  </body>
+</html>
