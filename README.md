@@ -21,4 +21,9 @@ this page changes with it — a security policy that disagrees with the manifest
 a reviewer looks for. Added 2 Sep 2026, after `ECOHELP-160119` asked for a security
 document **separate from the privacy policy**.
 
+📸 `doc-mermaid-page.png` e `doc-mermaid-zoom.png` sono **copie** di
+`mermaid-confluence/marketplace/screenshots/1-svg-1840x900.png` e `2-zoom-1840x900.png`.
+Se si rifanno le schermate della scheda (`dev/shots.ps1`), si ricopiano anche qui:
+altrimenti la documentazione mostra un prodotto diverso da quello del Marketplace.
+
 Edit the files, commit, push. GitHub Pages serves the root of `main`.

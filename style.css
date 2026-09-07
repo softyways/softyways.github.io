@@ -155,6 +155,52 @@ code {
   border-radius: 3px;
 }
 
+/* Code blocks are meant to be copied: they must not push the page sideways,
+   and on a phone they must not shrink the text to nothing. */
+pre {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  margin: 0 0 1.25rem;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+figure {
+  margin: 1.5rem 0;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+figcaption {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* The numbered path a new user follows; the numbers matter, so they stay. */
+ol {
+  padding-left: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+ol li {
+  margin-bottom: 0.6rem;
+}
+
 footer {
   max-width: 46rem;
   margin: 4rem auto 0;

@@ -6,7 +6,7 @@
     <title>Documentation — Mermaid SVG Diagrams for Confluence</title>
     <meta
       name="description"
-      content="How to add a Mermaid diagram to a Confluence page, how zoom and full screen work, what happens in dark mode and inside containers, and what the app deliberately does not do."
+      content="How to add a Mermaid diagram to a Confluence page in under a minute, diagrams you can copy and paste, how zoom and full screen work, what happens in dark mode and inside containers, and what to do when nothing appears."
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -34,42 +34,140 @@
       <h1>Documentation</h1>
       <p class="lead">Mermaid SVG Diagrams for Confluence</p>
 
-      <h2>Adding a diagram</h2>
+      <h2 id="start">Start here</h2>
+      <p>Adding your first diagram takes about a minute. There is nothing to set up first.</p>
+      <ol>
+        <li>Edit any Confluence page.</li>
+        <li>
+          Type <strong>/Mermaid</strong> and choose <strong>Mermaid Diagram</strong> from the list.
+        </li>
+        <li>
+          The macro opens a panel with a single text box. Paste your Mermaid text into it — or take one of the
+          <a href="#examples">examples below</a> to start with.
+        </li>
+        <li>Press <strong>Save</strong>. The diagram is drawn immediately, inside the editor.</li>
+        <li>Publish the page. Readers see the same diagram, at the same size.</li>
+      </ol>
+
+      <div class="callout">
+        <p>
+          <strong>A macro you have just inserted already shows a sample diagram.</strong> That is deliberate: you can
+          see the app working before you have written anything. Open the configuration and replace the sample with your
+          own text — it is not a template you have to fill in, and there is no step between typing and saving.
+        </p>
+      </div>
+
+      <figure>
+        <img
+          src="doc-mermaid-page.png"
+          alt="A flowchart rendered on a Confluence page, filling the width of the column"
+          loading="lazy"
+        />
+        <figcaption>
+          A diagram on a published page. It is drawn at the width it needs and scaled down to fit the column, never
+          stretched up to fill it.
+        </figcaption>
+      </figure>
+
+      <h2 id="examples">Diagrams to copy and paste</h2>
       <p>
-        Edit a Confluence page, type <strong>/Mermaid</strong> and choose <strong>Mermaid Diagram</strong>. The macro
-        opens its configuration panel: a single text box. Paste or write your Mermaid text there and press
-        <strong>Save</strong>. The diagram is drawn straight away, in the editor and on the published page.
-      </p>
-      <p>
-        A macro you have just inserted shows a sample diagram, so you can see it working before you have written
-        anything. Open the configuration and replace it with your own.
+        Every example below is plain <a href="https://mermaid.js.org/">Mermaid</a> and renders with the version of
+        Mermaid this app ships. Paste one into the macro, press Save, then change the labels to yours.
       </p>
 
-      <h2>Writing the diagram</h2>
-      <p>
-        The text is plain <a href="https://mermaid.js.org/">Mermaid</a>. The first line has to say which kind of diagram
-        it is — <code>graph TD</code>, <code>sequenceDiagram</code>, <code>classDiagram</code>, <code>gantt</code>, and
-        so on. That first line is the single most common thing to lose when pasting.
-      </p>
-      <pre><code>graph TD
-  A[Reader opens the page] --&gt; B{Is there a diagram?}
-  B -- yes --&gt; C[Render as SVG]
-  B -- no --&gt; D[Nothing is loaded]</code></pre>
+      <h3>Flowchart</h3>
+      <pre><code>flowchart TD
+  A[Request arrives] --&gt; B{Signed in?}
+  B -- no --&gt; C[Send to login]
+  B -- yes --&gt; D[Load the page]
+  D --&gt; E[Done]</code></pre>
 
-      <h2>Zoom and full screen</h2>
+      <h3>Sequence diagram</h3>
+      <pre><code>sequenceDiagram
+  participant R as Reader
+  participant C as Confluence
+  participant M as Macro
+  R-&gt;&gt;C: opens the page
+  C-&gt;&gt;M: renders the macro
+  M--&gt;&gt;R: SVG diagram</code></pre>
+
+      <h3>Gantt chart</h3>
+      <pre><code>gantt
+  title Release plan
+  dateFormat YYYY-MM-DD
+  section Build
+  Write the code   :done, a1, 2026-09-01, 7d
+  Review           :active, a2, after a1, 3d
+  section Ship
+  Publish          :a3, after a2, 2d</code></pre>
+
+      <h3>Class diagram</h3>
+      <pre><code>classDiagram
+  class Page {
+    +String title
+    +publish()
+  }
+  class Macro {
+    +String source
+    +render()
+  }
+  Page "1" --&gt; "0..*" Macro : contains</code></pre>
+
+      <h3>Entity relationship diagram</h3>
+      <pre><code>erDiagram
+  TEAM ||--o{ PAGE : owns
+  PAGE ||--o{ DIAGRAM : contains
+  DIAGRAM {
+    string source
+    string type
+  }</code></pre>
+
+      <h3>State diagram</h3>
+      <pre><code>stateDiagram-v2
+  [*] --&gt; Draft
+  Draft --&gt; InReview : submit
+  InReview --&gt; Draft : changes requested
+  InReview --&gt; Published : approve
+  Published --&gt; [*]</code></pre>
+
+      <h2 id="writing">Writing the diagram</h2>
+      <p>
+        The first line has to say which kind of diagram it is — <code>flowchart TD</code>,
+        <code>sequenceDiagram</code>, <code>classDiagram</code>, <code>gantt</code>, and so on. That first line is the
+        single most common thing to lose when copying from somewhere else, and without it nothing can be drawn.
+      </p>
+      <p>
+        Mermaid's own documentation lists every diagram type and every option; this app renders whatever that version
+        of Mermaid renders, with no additions and no restrictions of ours.
+      </p>
+
+      <h2 id="zoom">Zoom and full screen</h2>
       <p>
         Hover over a diagram and a small bar appears at its bottom right: <strong>−</strong>, <strong>Fit</strong>,
-        <strong>+</strong> and <strong>Full screen</strong>. Zoom steps from half size to four times; <em>Fit</em>
-        returns the diagram to the width of the page column. Past that width the diagram scrolls inside its own box
-        rather than pushing the page sideways.
+        <strong>+</strong> and <strong>Full screen</strong>. The steps are half, three quarters, actual size, and then
+        one and a half, two, three and four times. <em>Fit</em> returns the diagram to the width of the page column.
+        Above actual size the diagram scrolls inside its own box rather than pushing the page sideways.
+      </p>
+      <p>
+        Zoom multiplies the size you are <em>currently seeing</em>, not the diagram's natural size. On a wide diagram
+        already shrunk to fit the column, that is what makes <strong>−</strong> visibly do something.
       </p>
       <p>
         <strong>Full screen</strong> opens the same diagram in a dialog the size of the window, with the same bar. It is
-        a dialog and not the browser's own full-screen mode, because Confluence does not allow an app to take over the
+        a dialog rather than the browser's own full-screen mode because Confluence does not let an app take over the
         screen; nothing about the diagram changes, only the room it has.
       </p>
 
-      <h2>Width, printing and dark mode</h2>
+      <figure>
+        <img
+          src="doc-mermaid-zoom.png"
+          alt="The zoom bar at the bottom right of a diagram, showing minus, Fit and plus"
+          loading="lazy"
+        />
+        <figcaption>The bar appears on hover and disappears when you move away. It is never part of the page.</figcaption>
+      </figure>
+
+      <h2 id="width">Width, printing and dark mode</h2>
       <p>
         The diagram is drawn as SVG at the width it actually needs, and is only ever scaled <em>down</em> to fit a
         narrower column — never stretched up to fill one. Because it is vector, it stays sharp when you zoom, when the
@@ -80,27 +178,67 @@
         colour instead of on a white rectangle. Switching the theme redraws the diagram without reloading the page.
       </p>
 
-      <h2>Inside expand and include page</h2>
+      <h2 id="containers">Inside expand and include page</h2>
       <p>
         A diagram works inside a collapsed <strong>Expand</strong> macro, inside an <strong>Include page</strong>, and
         with the two nested. It is drawn when the container opens, at the width it then has.
       </p>
 
-      <h2>When the syntax breaks</h2>
+      <h2 id="trouble">When something does not look right</h2>
+
+      <h3>The macro still shows the sample diagram</h3>
       <p>
-        Instead of a generic failure, the macro shows the line number and an excerpt with a marker under the character
-        Mermaid stopped at. The grammar's list of expected tokens is deliberately cut: it names symbols of the parser,
-        not anything you typed.
+        The text box was empty when it was saved. An empty box is a legitimate choice — it puts the macro back to its
+        sample state rather than saving a blank diagram. Open the configuration, paste your text, and save again.
       </p>
 
-      <h2>Licence</h2>
+      <h3>A message about the first line</h3>
+      <pre><code>The first line has to say which kind of diagram this is —
+for example: graph TD, sequenceDiagram, gantt, classDiagram.</code></pre>
+      <p>
+        The text was pasted without its opening line. Add <code>flowchart TD</code> (or the type you meant) as the first
+        line. This is what you get when a diagram is copied from a chat window or a document that dropped it.
+      </p>
+
+      <h3>A line number and a marker</h3>
+      <pre><code>Line 3 could not be read.
+
+...sing brace  B --&gt; C[Never drawn]
+----------------------^</code></pre>
+      <p>
+        A syntax error. The marker sits under the character Mermaid stopped at — usually an unclosed bracket or quote a
+        line or two earlier. The parser's list of expected tokens is deliberately not shown: it names symbols of the
+        grammar, not anything you typed.
+      </p>
+
+      <h3>The diagram looks small</h3>
+      <p>
+        It is being fitted to the width of the page column. Use <strong>+</strong> to enlarge it in place, or
+        <strong>Full screen</strong> to open it in a dialog the size of the window. Nothing is lost at any size: it is
+        vector, not a picture.
+      </p>
+
+      <h3>A notice instead of the diagram</h3>
+      <p>
+        The site has no active subscription. Your text is untouched and reappears as soon as the subscription is
+        active — see <a href="#licence">Licence</a> below.
+      </p>
+
+      <h3>The first diagram on a page takes a moment</h3>
+      <p>
+        The Mermaid engine is fetched once, then cached by the browser and reused. The first diagram after a browser
+        cache is cleared pays for that fetch; the ones after it do not, and several diagrams on the same page share the
+        work rather than repeating it.
+      </p>
+
+      <h2 id="licence">Licence</h2>
       <p>
         Sites with up to 10 users are free. On a site with no active subscription the macro shows a short notice in
         place of the diagram; your text is untouched and reappears as soon as the subscription is active. Subscriptions
         are managed by Atlassian, from the app's Marketplace listing or your site's <em>Apps</em> administration.
       </p>
 
-      <h2>What it does not do</h2>
+      <h2 id="not">What it does not do</h2>
       <ul>
         <li>
           It is <strong>not a drawing tool</strong>. You write Mermaid; there is no canvas and no shape palette. If you
@@ -115,7 +253,7 @@
         <li><strong>Confluence</strong>, not Jira.</li>
       </ul>
 
-      <h2>Where your text goes</h2>
+      <h2 id="data">Where your text goes</h2>
       <p>
         Nowhere. The diagram is drawn in the reader's browser, by a copy of Mermaid served as part of the app. The macro
         holds no server of ours, makes no outbound call, and asks Confluence for no permission at all: your text stays
@@ -123,7 +261,7 @@
         <strong>Runs on Atlassian</strong> badge on the listing attests.
       </p>
 
-      <h2>Support</h2>
+      <h2 id="support">Support</h2>
       <p>
         <a href="https://andysoftydev.atlassian.net/servicedesk/customer/portal/1">Open a ticket</a>, or write to
         <a href="mailto:support@softyways.com">support@softyways.com</a>. Include your Confluence site URL and, if a
