@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy — Copy Item to Board for monday.com</title>
+    <meta
+      name="description"
+      content="What Copy Item to Board reads from your monday.com account, what it keeps (almost nothing), and what it sends anywhere else (nothing outside monday.com)."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Softyways">
+        <rect width="144" height="144" rx="30" fill="#172B4D" />
+        <g fill="#5E6C84">
+          <circle cx="40" cy="40" r="10" />
+          <circle cx="72" cy="40" r="10" />
+          <circle cx="104" cy="40" r="10" />
+          <circle cx="40" cy="72" r="10" />
+          <circle cx="104" cy="72" r="10" />
+          <circle cx="40" cy="104" r="10" />
+          <circle cx="72" cy="104" r="10" />
+          <circle cx="104" cy="104" r="10" />
+        </g>
+        <circle cx="72" cy="72" r="19" fill="none" stroke="#FFAB00" stroke-width="4" opacity="0.45" />
+        <circle cx="72" cy="72" r="12" fill="#FFAB00" />
+      </svg>
+      <a href="./">Softyways</a>
+    </header>
+
+    <main>
+      <h1>Privacy policy</h1>
+      <p class="lead">Copy Item to Board for monday.com</p>
+      <p class="date">Last updated 4 November 2026</p>
+
+      <p>
+        This page says what the app does with your data in plain terms. Where the app cannot prove something, it says
+        so.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>The short version.</strong> The app copies an item from one board to another inside your own monday.com
+          account. It reads the item and writes the copy using <em>your</em> permissions. It runs on monday.com's own
+          hosting (monday code), has no database, and sends nothing to any other company.
+        </p>
+      </div>
+
+      <h2>What the app reads</h2>
+      <p>
+        Only what is needed to make the copy, and only for the item you chose: its name, its column values, its
+        subitems, its updates and replies (with their authors and dates), and the files attached to them. It also reads
+        the list of boards you can see, and the columns and groups of the source and target boards, so it can match
+        them.
+      </p>
+      <p>The app asks monday.com for these permissions (scopes) and no others:</p>
+      <ul>
+        <li><code>boards:read</code> and <code>boards:write</code> — read the source item and boards; create the copy.</li>
+        <li><code>updates:read</code> and <code>updates:write</code> — read the item's updates; write them on the copy.</li>
+        <li><code>assets:read</code> — read the files, so the copy can point at the same files.</li>
+      </ul>
+      <p>
+        It asks for no access to users, workspaces, or account settings. Everything it does is limited by what the
+        person who clicked can already see and do in monday.com.
+      </p>
+
+      <h2>Where the work happens</h2>
+      <p>
+        <strong>When you copy by hand</strong>, in your browser: the app's window talks to monday.com's API with your
+        session, and no server of ours is involved.
+      </p>
+      <p>
+        <strong>When an automation copies an item</strong>, on a small server hosted by monday.com's own platform
+        (monday code). monday.com sends it a signed request; the server checks the signature, makes the copy through
+        monday.com's API with a short-lived token that belongs to that run (it expires about 30 minutes after it is
+        issued), and reports the result back to monday.com. We do not run any other server, and nothing is sent to any
+        other company.
+      </p>
+
+      <h2>What the app keeps</h2>
+
+      <div class="callout">
+        <p>
+          <strong>No database, no copy of your boards, no stored tokens, no analytics.</strong>
+        </p>
+      </div>
+
+      <ul>
+        <li>
+          <strong>The items and updates themselves</strong> exist only in your monday.com account. The app passes them
+          from one board to another and keeps nothing.
+        </li>
+        <li>
+          <strong>For automations,</strong> the server remembers the identifier of each run it has already started, for
+          one hour and in memory only, so that a repeated request cannot create a second copy. It is a random id, not
+          your data. The short-lived token travels to the copy step through monday code's own queue and is used for that
+          one run.
+        </li>
+        <li>
+          <strong>Server logs</strong> (kept by monday code) contain run identifiers, item and board numbers, counts
+          such as "3 subitems, 5 updates", and error messages. They do not contain the text of your items or updates.
+        </li>
+        <li>
+          <strong>In your browser,</strong> the window remembers your last three target boards and groups (their names
+          and ids) so you can pick them again. This stays in your browser's local storage and never leaves it. Clearing
+          your browser data removes it.
+        </li>
+      </ul>
+
+      <h3>Where it is stored</h3>
+      <p>
+        Your data stays where monday.com keeps your account. The copy is created in the same account, so data residency
+        does not change. The automation server runs on monday.com's hosting in the EU region.
+      </p>
+
+      <h2>What the app sends anywhere else</h2>
+      <p>
+        <strong>Nothing outside monday.com.</strong> The app does not call third-party services, does not load scripts or
+        fonts from third-party hosts, and has no analytics or error-reporting service. Its only network traffic goes to
+        monday.com (its API, its hosting, and the address monday.com gives it to report a run's result).
+      </p>
+
+      <h2>What the copy shows</h2>
+      <p>
+        Because monday.com's API writes updates as the person who runs the copy, each copied update starts with a line
+        such as "Originally posted by Ana on 2026-10-30 14:05 UTC", so the history stays readable. The last update on the
+        copy says where it was copied from and lists anything that could not be copied (for example, a column that has
+        no match on the target board). The original item is never changed.
+      </p>
+
+      <h2>Personal data</h2>
+      <p>
+        The app is not designed to collect personal data. It does move the names of the people who wrote updates, as part
+        of the history it copies, from one board of your account to another. That data stays in your account.
+        Softyways does not receive, store, or process data from your account, and is neither a data controller nor a
+        data processor for it.
+      </p>
+
+      <h2>How to delete it</h2>
+      <p>
+        There is nothing of ours to delete. Uninstalling the app removes its access to your account. The copies it
+        created are ordinary items on your boards; delete them as you would any other item.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If the app's behavior changes, this page changes with it and the date above moves. If a future version asked for
+        a new permission, it would be visible on the app's monday.com listing.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy, or a request about data:
+        <a href="mailto:support@softyways.com">support@softyways.com</a>. Security reports:
+        <a href="mailto:security@softyways.com">security@softyways.com</a>.
+      </p>
+    </main>
+
+    <footer>
+      <p><a href="./">Softyways</a> · Last updated 4 November 2026</p>
+    </footer>
+  </body>
+</html>

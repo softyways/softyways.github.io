@@ -9,6 +9,8 @@ The Softyways site: static pages, no build step, no dependencies.
 | `privacy-mermaid.html` | The privacy policy for **Mermaid SVG Diagrams for Confluence** |
 | `documentation.html` | User documentation for **Permission Review for Jira** |
 | `documentation-mermaid.html` | User documentation for **Mermaid SVG Diagrams for Confluence** |
+| `privacy-monday.html` | The privacy policy for **Copy Item to Board for monday.com** |
+| `documentation-monday.html` | User documentation for **Copy Item to Board for monday.com** |
 | `security.html` | The **security policy**, partner-level: covers both apps. Required by the *Security and compliance* section of the Privacy & Security tab |
 
 `privacy.html` is the published form of `PRIVACY.md` in the app's own repository.

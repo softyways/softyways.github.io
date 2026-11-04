@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documentation — Copy Item to Board for monday.com</title>
+    <meta
+      name="description"
+      content="How to copy a monday.com item to another board with its subitems, updates and files — by hand or from an automation — and what is and is not copied."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Softyways">
+        <rect width="144" height="144" rx="30" fill="#172B4D" />
+        <g fill="#5E6C84">
+          <circle cx="40" cy="40" r="10" />
+          <circle cx="72" cy="40" r="10" />
+          <circle cx="104" cy="40" r="10" />
+          <circle cx="40" cy="72" r="10" />
+          <circle cx="104" cy="72" r="10" />
+          <circle cx="40" cy="104" r="10" />
+          <circle cx="72" cy="104" r="10" />
+          <circle cx="104" cy="104" r="10" />
+        </g>
+        <circle cx="72" cy="72" r="19" fill="none" stroke="#FFAB00" stroke-width="4" opacity="0.45" />
+        <circle cx="72" cy="72" r="12" fill="#FFAB00" />
+      </svg>
+      <a href="./">Softyways</a>
+    </header>
+
+    <main>
+      <h1>Documentation</h1>
+      <p class="lead">Copy Item to Board for monday.com</p>
+      <p class="date">Last updated 4 November 2026</p>
+
+      <p>
+        monday.com's own "duplicate to another board" drops subitems, updates and files, and leaves select columns empty
+        when the boards do not match. This app copies the whole item, and tells you <strong>before</strong> you copy what
+        would be lost.
+      </p>
+
+      <h2>Copy an item by hand</h2>
+      <ol>
+        <li>On a board, open the item's <strong>⋯</strong> menu, then <strong>Apps › Copy to board…</strong>.</li>
+        <li>Pick the target <strong>board</strong>, and optionally a <strong>group</strong>. The last three destinations you used appear as shortcuts.</li>
+        <li>
+          Click <strong>Preview the copy</strong>. A table shows every column of the item and where it goes:
+          <em>Copied</em>, <em>Adapted</em> (for example text into long text), <em>Lost</em> (no matching column on the
+          target board) or <em>Skipped</em> (columns an app cannot write, such as formulas).
+        </li>
+        <li>
+          Choose what to bring along — <strong>subitems</strong>, <strong>updates</strong>, a <strong>link to the original</strong> — and click
+          <strong>Copy item</strong>. A big item takes up to a minute; a progress bar shows where it is.
+        </li>
+      </ol>
+      <div class="callout">
+        <p>
+          <strong>Nothing is written until you click Copy item.</strong> The original item is never changed, and the copy
+          keeps its name (no "(copy)" suffix).
+        </p>
+      </div>
+
+      <h2>Copy automatically</h2>
+      <p>
+        The app adds an action to monday.com's workflow builder: <strong>Copy item to board (with subitems, updates and
+        files)</strong>. For example, <em>when Status changes to Won, copy the item to the Clients board</em>.
+      </p>
+      <ol>
+        <li>Create a workflow (<strong>+ › Workflow</strong> in your workspace) and choose a trigger, such as <em>When status changes to something</em>.</li>
+        <li>Add an <strong>Action</strong> step and search for <strong>Copy item to board</strong>.</li>
+        <li>The source board and the item are filled in from the trigger. Choose the <strong>target board</strong> and a <strong>group</strong>.</li>
+        <li>Publish the workflow.</li>
+      </ol>
+      <p>
+        The copy runs in the background. A repeated request for the same run never creates a second copy. If the copy
+        fails or only part of it succeeds, the run shows an error that says what was created and what is missing; the
+        app does not retry by itself, so you never get a duplicate. Automations need a monday.com plan that includes
+        automations. The by-hand button works on every plan.
+      </p>
+
+      <h2>What is copied</h2>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr><th>Part of the item</th><th>On the copy</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Name</td><td>Same name, no "(copy)".</td></tr>
+            <tr><td>Column values</td><td>Matched by title and type (text and long text are interchangeable, and so are status and color). Status and dropdown labels that do not exist on the target are <strong>created</strong>. Other column types are copied as they are when the target column has the same title and type.</td></tr>
+            <tr><td>File columns</td><td>The same files, pointed at by reference (not downloaded or duplicated).</td></tr>
+            <tr><td>Subitems</td><td>All of them, with their own values, if the target board has subitems.</td></tr>
+            <tr><td>Updates and replies</td><td>In their original order, replies under their parent. Each starts with "Originally posted by … on …".</td></tr>
+            <tr><td>Files in updates</td><td>Attached again to the copied update.</td></tr>
+            <tr><td>Link to the original</td><td>A last update: "Copied from … (item …)", followed by anything that was not copied.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What is not copied</h2>
+      <ul>
+        <li>Columns that have <strong>no match on the target board</strong> (the preview marks them <em>Lost</em>). Add a column with the same title and type on the target, or copy anyway and leave them out.</li>
+        <li>Columns that apps cannot write, or that only make sense on their own board: formula, mirror, lookup, auto number, item ID, creation log, last updated, button, dependency, time tracking, progress, vote, connect boards and doc columns. The preview marks them <em>Skipped</em>.</li>
+        <li>The original author and time of an update. monday.com writes the copy as the person who copies, so the original author and date appear in the first line of each update instead.</li>
+        <li>Automations, integrations and views attached to the item or its board.</li>
+      </ul>
+
+      <h2>Permissions</h2>
+      <p>
+        The app works with the permissions of the person who uses it: it can only read items that person can see and only
+        write on boards that person can edit. It asks monday.com for <code>boards:read</code>,
+        <code>boards:write</code>, <code>updates:read</code>, <code>updates:write</code> and
+        <code>assets:read</code>, and for nothing else. Details are in the
+        <a href="privacy-monday.html">privacy policy</a>.
+      </p>
+
+      <h2>If something goes wrong</h2>
+      <ul>
+        <li><strong>"You don't have permission to add items to that board."</strong> Ask a board owner for edit access, or pick another board.</li>
+        <li><strong>"That board no longer exists…" / "…was deleted or changed in the meantime."</strong> Pick the target again.</li>
+        <li><strong>"monday is busy right now."</strong> monday.com is limiting requests. Wait a minute and try again.</li>
+        <li>
+          <strong>"The item was created but N steps failed."</strong> The item exists on the target board but some
+          subitems or updates are missing. Do not copy it again: open the new item, fix what is missing by hand or delete
+          the copy and start over.
+        </li>
+      </ul>
+
+      <h2>Support</h2>
+      <p>
+        <a href="mailto:support@softyways.com">support@softyways.com</a>. Please include the item's board and the time
+        of the copy; we can find the run from that. We aim to answer within two business days.
+      </p>
+    </main>
+
+    <footer>
+      <p><a href="./">Softyways</a> · <a href="privacy-monday.html">Privacy policy</a> · Last updated 4 November 2026</p>
+    </footer>
+  </body>
+</html>
