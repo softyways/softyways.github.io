@@ -201,6 +201,40 @@ ol li {
   margin-bottom: 0.6rem;
 }
 
+/* The install button (monday.com apps): one clear action, no icon fonts. */
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  background: #14907c;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #0a5c50;
+}
+
+/* A video that keeps its shape on a phone. */
+.video {
+  position: relative;
+  padding-bottom: 48.8%;
+  height: 0;
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 footer {
   max-width: 46rem;
   margin: 4rem auto 0;

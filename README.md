@@ -11,6 +11,8 @@ The Softyways site: static pages, no build step, no dependencies.
 | `documentation-mermaid.html` | User documentation for **Mermaid SVG Diagrams for Confluence** |
 | `privacy-monday.html` | The privacy policy for **Copy Item to Board for monday.com** |
 | `documentation-monday.html` | User documentation for **Copy Item to Board for monday.com** |
+| `terms-monday.html` | The **terms of service** for **Copy Item to Board** (monday.com asks for a link; says whether we contact users) |
+| `how-to-use-monday.html` | The **how-to-use page shown inside monday.com** (iframe): no site header, no footer, no links away. Plus `doc-monday-*.jpg` (copies of `monday-copy-item/scheda/marketplace/gallery-*`) |
 | `security.html` | The **security policy**, partner-level: covers both apps. Required by the *Security and compliance* section of the Privacy & Security tab |
 
 `privacy.html` is the published form of `PRIVACY.md` in the app's own repository.

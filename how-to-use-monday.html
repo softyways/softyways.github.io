@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>How to use Copy Item to Board</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* This page is shown inside monday.com: no site header, no footer, no links away. */
+      body { padding-top: 1.5rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>How to use Copy Item to Board</h1>
+      <p class="lead">Copy an item to another board with its subitems, updates and files, and see what would be lost before you copy.</p>
+
+      <div class="video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/A_Mju0fFyqU"
+          title="Copy Item to Board: 49-second demo"
+          loading="lazy"
+          allow="encrypted-media; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <h2>Before you start</h2>
+      <ul>
+        <li>You need a monday.com account and access to both boards: you can see the item on the source board, and you can add items on the target board.</li>
+        <li>Copying by hand works on every plan. Copying automatically (workflows) needs a plan that includes automations.</li>
+        <li>If the target board has a subitems column, subitems are copied too. If not, the app tells you.</li>
+        <li>You do not need to configure anything. The app has no settings page.</li>
+      </ul>
+
+      <h2>Install</h2>
+      <ol>
+        <li>Open the app's page in the monday.com marketplace and choose <strong>Install</strong>.</li>
+        <li>Review the permissions the app asks for (boards, updates and files) and confirm.</li>
+        <li>Done. The command <strong>Copy to board…</strong> now appears in every item's menu, and the workflow action <strong>Copy item to board</strong> appears in the workflow builder.</li>
+      </ol>
+
+      <h2>Your first copy</h2>
+      <ol>
+        <li>Open a board, click <strong>⋯</strong> next to an item, then <strong>Apps › Copy to board…</strong>.</li>
+        <li>Pick the target <strong>board</strong> (and a <strong>group</strong> if you want one). The last three destinations you used appear as shortcuts.</li>
+        <li>Click <strong>Preview the copy</strong>. The table shows every column and where it goes.</li>
+        <li>Choose what to bring along and click <strong>Copy item</strong>. A progress bar shows where it is; big items take up to a minute.</li>
+      </ol>
+
+      <figure>
+        <img src="doc-monday-1-preview.jpg" alt="The preview table: Copied, Adapted and Lost columns, with the options to bring subitems, updates and a link to the original" />
+        <figcaption>The preview tells you, before anything is written, what is copied, adapted or lost.</figcaption>
+      </figure>
+
+      <div class="callout">
+        <p>
+          <strong>Nothing is written until you click Copy item.</strong> The original item is never changed, and the
+          copy keeps its name (no "(copy)").
+        </p>
+      </div>
+
+      <figure>
+        <img src="doc-monday-2-done.jpg" alt="The finished copy: Copied 1 item, 3 subitems, 5 updates. The original was not touched." />
+        <figcaption>When it finishes, the window says exactly what was copied.</figcaption>
+      </figure>
+
+      <h2>What you will see on the copy</h2>
+      <p>
+        Every copied update starts with "Originally posted by … on …", because monday.com writes the copy as the person
+        who copies. The last update says where the item was copied from and lists anything that was not copied.
+      </p>
+      <figure>
+        <img src="doc-monday-3-result.jpg" alt="The copied item on the target board with its updates: Copied from Acme Corp renewal, Not copied: Priority, Deal value" />
+        <figcaption>The copy on the target board, with its history and the list of what could not be copied.</figcaption>
+      </figure>
+
+      <h2>Copy automatically</h2>
+      <ol>
+        <li>Create a workflow and choose a trigger, for example <em>When status changes to something</em>.</li>
+        <li>Add an <strong>Action</strong> and search for <strong>Copy item to board</strong>.</li>
+        <li>The source board and item come from the trigger. Choose the <strong>target board</strong> and a <strong>group</strong>.</li>
+        <li>Publish the workflow.</li>
+      </ol>
+      <p>
+        The copy runs in the background. A repeated request for the same run never creates a second copy. If a copy
+        fails or only part of it succeeds, the run shows an error that says what was created and what is missing.
+      </p>
+
+      <h2>What is not copied</h2>
+      <ul>
+        <li>Columns with no match on the target board (the preview marks them <em>Lost</em>): add a column with the same title and type, or copy anyway.</li>
+        <li>Columns apps cannot write: formula, mirror, lookup, auto number, item ID, creation log, last updated, button, dependency, time tracking, progress, vote, connect boards and doc columns (marked <em>Skipped</em>).</li>
+        <li>Automations, integrations and views attached to the item or its board.</li>
+      </ul>
+
+      <h2>If something goes wrong</h2>
+      <ul>
+        <li><strong>"You don't have permission to add items to that board."</strong> Ask a board owner for edit access, or pick another board.</li>
+        <li><strong>"monday is busy right now."</strong> monday.com is limiting requests. Wait a minute and try again.</li>
+        <li><strong>"The item was created but N steps failed."</strong> The item exists on the target board but some subitems or updates are missing. Do not copy it again: fix what is missing by hand or delete the copy and start over.</li>
+        <li>People with view-only access cannot add items, so the app cannot copy for them. That is a monday.com rule, not a setting of the app.</li>
+      </ul>
+
+      <h2>Help</h2>
+      <p>Write to support@softyways.com with the board and the time of the copy, and we will find it. We aim to answer within two business days.</p>
+    </main>
+  </body>
+</html>
