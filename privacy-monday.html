@@ -119,7 +119,15 @@
       <p>
         <strong>Nothing outside monday.com.</strong> The app does not call third-party services, does not load scripts or
         fonts from third-party hosts, and has no analytics or error-reporting service. Its only network traffic goes to
-        monday.com (its API, its hosting, and the address monday.com gives it to report a run's result).
+        monday.com (its API, its hosting, and the address monday.com gives it to report a run's result). The app
+        also tells monday.com, once per finished copy, that you got value from it (monday.com's "value created" event);
+        that message goes to monday.com and carries no data from your boards.
+      </p>
+
+      <p>
+        The window has a link, <strong>How to use this app</strong>, that opens our how-to page in a new tab. Nothing is
+        sent to it until you click, and the app itself does not call it. That page is on our site
+        (softyways.github.io) and embeds a demo video from YouTube.
       </p>
 
       <h2>What the copy shows</h2>
