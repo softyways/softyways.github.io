@@ -12,6 +12,7 @@ The Softyways site: static pages, no build step, no dependencies.
 | `privacy-monday.html` | The privacy policy for **Copy Item to Board for monday.com** |
 | `documentation-monday.html` | User documentation for **Copy Item to Board for monday.com** |
 | `terms-monday.html` | The **terms of service** for **Copy Item to Board** (monday.com asks for a link; says whether we contact users) |
+| `pricing-monday.html` | The **pricing page** for **Copy Item to Board** (one plan, $19/month or $14/month yearly, 14-day trial); the submission form asks for its link. Keep it equal to the pricing version submitted in the Developer Center |
 | `how-to-use-monday.html` | The **how-to-use page shown inside monday.com** (iframe): no site header, no footer, no links away. Plus `doc-monday-*.jpg` (copies of `monday-copy-item/scheda/marketplace/gallery-*`) |
 | `security.html` | The **security policy**, partner-level: covers both apps. Required by the *Security and compliance* section of the Privacy & Security tab |
 
